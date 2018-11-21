@@ -7,8 +7,15 @@ import { NavController } from 'ionic-angular';
 })
 export class LoginPage {
 
+  email: string = ""
+  password: string = ""
+
   constructor(public navCtrl: NavController) {
 
+  }
+
+  login() {
+    console.log('login clicked')
   }
 
 }
