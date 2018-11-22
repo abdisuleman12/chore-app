@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import firebase from 'firebase';
+import { ChoresPage } from '../chores/chores';
 
 @Component({
   selector: 'page-signup',
@@ -27,6 +28,8 @@ export class SignupPage {
         photoURL: ""
       }).then(() => {
         console.log("Profile Updated")
+
+        this.navCtrl.setRoot(ChoresPage)
       
       }).catch((err) => {
         console.log(err)
