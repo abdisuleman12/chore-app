@@ -4,10 +4,13 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+import firebase from 'firebase';
+
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
 
-import firebase from 'firebase';
+
 
 var config = {
   apiKey: "AIzaSyA6hQw3WU3-pvtdREH0_5zjdRYyoYDCMko",
@@ -24,6 +27,7 @@ firebase.initializeApp(config);
   declarations: [
     MyApp,
     LoginPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,8 @@ firebase.initializeApp(config);
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage
+    LoginPage,
+    SignupPage
   ],
   providers: [
     StatusBar,
