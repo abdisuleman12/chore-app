@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import firebase from 'firebase';
+import { SignupPage } from '../signup/signup';
 
 @Component({
   selector: 'login-page',
@@ -17,7 +18,11 @@ export class LoginPage {
   }
 
   login() {
-    firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+  
+  }
+
+  gotoSignUp(){
+    this.navCtrl.push(SignupPage)
   }
 
 }
