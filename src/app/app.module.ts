@@ -9,6 +9,7 @@ import firebase from 'firebase';
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
+import { ChoresPage } from '../pages/chores/chores';
 
 
 
@@ -26,6 +27,7 @@ firebase.initializeApp(config);
 @NgModule({
   declarations: [
     MyApp,
+    ChoresPage,
     LoginPage,
     SignupPage
   ],
@@ -36,6 +38,7 @@ firebase.initializeApp(config);
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    ChoresPage,
     LoginPage,
     SignupPage
   ],
