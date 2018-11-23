@@ -33,7 +33,7 @@ export class ChoresPage {
               firebase.auth().signOut().then(() => {
                 this.navCtrl.setRoot(LoginPage).then(() => {
                   this.toastCtrl.create({
-                    message: "Logout Successful!",
+                    message: "Logout Successful",
                     duration: 3000
                   }).present();
                 })
