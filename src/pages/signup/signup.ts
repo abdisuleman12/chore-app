@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 
 import firebase from 'firebase';
 import { ChoresPage } from '../chores/chores';
@@ -14,22 +14,40 @@ export class SignupPage {
   email: string = "";
   password: string = ""
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public toastCtrl: ToastController,
+    public alertCtrl: AlertController
+    ) {
   }
 
   signUp() {
-    firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then((data) => {  
+    firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+    .then((data) => {  
       
       //assigning firebase user interface to new user    
       let newUser: firebase.User = data.user
 
       newUser.updateProfile({
-        displayName: newUser.displayName,
+        displayName: this.name,
         photoURL: ""
       }).then(() => {
         console.log("Profile Updated")
 
-        this.navCtrl.setRoot(ChoresPage)
+        this.alertCtrl.create({
+          title: "Account Created!",
+          message: "Your account was created successfully",
+          buttons: [
+            {
+              text: "Ok",
+              handler: () => {
+                this.navCtrl.setRoot(ChoresPage)
+              }
+            }
+          ],
+          cssClass: 'alertBox'
+         }).present();
       
       }).catch((err) => {
         console.log(err)
@@ -37,6 +55,11 @@ export class SignupPage {
 
     }).catch((err) => {
       console.log(err)
+
+      this.toastCtrl.create({
+        message: err.message,
+        duration: 3000
+      }).present()
     })
   };
 
