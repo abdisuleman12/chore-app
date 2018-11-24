@@ -11,12 +11,49 @@ import firebase from 'firebase';
 })
 export class ChoresPage {
 
+  chore: string = "";
+  dateAdded: string = "";
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public alertCtrl : AlertController,
     public toastCtrl: ToastController
     ) {
+  }
+
+  addChore() {
+
+    this.alertCtrl.create({
+      title: "Date",
+      message: "Please Select Date",
+      cssClass: "alertBox",
+      inputs: [
+        {
+          name: 'date',
+          type: 'date'
+        }
+      ],
+      buttons: [
+        {
+          text: "Ok",
+          handler: (data) => {
+            this.dateAdded = data
+          }
+        },
+        {
+          text: "Cancel",
+          role: "cancel",
+          //cssClass: "cancelButton",
+          handler: () => {
+            this.chore = "";
+          }
+        }
+      ]
+    }).present()
+
+    console.log(this.dateAdded)
+    
   }
 
   logout() {
