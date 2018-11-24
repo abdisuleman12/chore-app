@@ -29,3 +29,14 @@
       }
 
 }
+
+.grid-width {
+  width: 75%;
+}
+
+.rowStyle {
+  background-color: map-get($colors, light);
+  padding-left: 10px;
+  border-radius: 30px;
+  margin-top: 10px;
+}
