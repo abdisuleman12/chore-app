@@ -36,23 +36,26 @@ export class ChoresPage {
       ],
       buttons: [
         {
-          text: "Ok",
-          handler: (data) => {
-            this.dateAdded = data
-          }
-        },
-        {
           text: "Cancel",
           role: "cancel",
           //cssClass: "cancelButton",
-          handler: () => {
-            this.chore = "";
+          handler: (data) => {
+            console.log(data)
+            this.dateAdded = ""
+            this.chore = ""
           }
-        }
+        },
+        {
+          text: "Ok",
+          handler: (data) => {
+            if(data.date) {
+              this.dateAdded = data.date
+            }
+            
+          }
+        },
       ]
     }).present()
-
-    console.log(this.dateAdded)
     
   }
 
