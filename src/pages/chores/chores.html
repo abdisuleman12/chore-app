@@ -19,8 +19,12 @@
   <ion-grid class="grid-width">
 
     <ion-row class="rowStyle" margin-top>
-          <ion-icon class="addButton" name="add-circle" color="primary" (click)="addChore()"></ion-icon>          
+          <ion-icon name="add-circle" color="primary" (click)="addChore()"></ion-icon>          
           <ion-input type="text" placeholder="Add Chore" [(ngModel)]="chore"></ion-input>
+    </ion-row>
+
+    <ion-row *ngIf="dateAdded">
+      <ion-input [(ngModel)]="dateAdded"></ion-input>
     </ion-row>
 
 
