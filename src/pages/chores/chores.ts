@@ -25,13 +25,14 @@ export class ChoresPage {
   addChore() {
 
     this.alertCtrl.create({
-      title: "Date",
-      message: "Please Select Date",
+      title: "Add Chore",
+      message: "Add Details For Chore Below",
       cssClass: "alertBox",
       inputs: [
         {
-          name: 'date',
-          type: 'date'
+          name: 'textForChore',
+          type: 'text',
+          placeholder: 'Insert Chore'
         }
       ],
       buttons: [
@@ -48,14 +49,18 @@ export class ChoresPage {
         {
           text: "Ok",
           handler: (data) => {
-            if(data.date) {
-              this.dateAdded = data.date
+            if(data) {
+              this.chore = data.textForChore
             }
             
           }
         },
       ]
     }).present()
+
+    firebase.firestore().collection("chores").add({
+
+    })
     
   }
 

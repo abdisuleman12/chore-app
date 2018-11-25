@@ -18,14 +18,16 @@
 
   <ion-grid class="grid-width">
 
-    <ion-row margin-top>         
-          <button ion-button round color="secondary" block (click)="addChore()">
-            Add Chore
-          </button> 
+    <ion-row margin-top>      
+      <ion-col text-center>
+          <button ion-button  block round color="secondary" (click)="addChore()">
+              Add Chore
+            </button> 
+      </ion-col>   
     </ion-row>
 
-    <ion-row class="rowStyle" *ngIf="dateAdded">
-      <ion-input [(ngModel)]="dateAdded"></ion-input>
+    <ion-row class="rowStyle" *ngIf="chore">
+      <ion-input [(ngModel)]="chore"></ion-input>
     </ion-row>
 
 
