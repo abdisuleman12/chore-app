@@ -12,20 +12,43 @@ import firebase from 'firebase';
 export class ChoresPage {
 
   chore: string = "";
+  chores: any[] = [];
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public alertCtrl : AlertController,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
     ) {
+      this.getChores();
+  }
+
+  addPhoto() {
+    console.log('addPhoto Clicked')
+  }
+
+  getChores() {
+
+   let query = firebase.firestore().collection("chores").orderBy("created", "desc")
+
+   query.get()
+   .then((docs) => {
+
+     docs.forEach((doc) => {
+       console.log(doc, 'each doc in for each')
+       this.chores.push(doc)
+     })
+   })
+
   }
 
   postChore() {
 
     if(this.chore === "") {
       this.alertCtrl.create({
-        title: "Must Insert Chore",
+        title: "Error",
+        cssClass: "alertBox",
+        message: "Field must not be empty",
         buttons: ['Dismiss']
       }).present();
     } else {
@@ -36,6 +59,15 @@ export class ChoresPage {
         owner_name: firebase.auth().currentUser.displayName
       }).then((doc) => {
         console.log('chore added', doc);
+
+        this.toastCtrl.create({
+          message: `${this.chore}` + " has been successfully added!",
+          duration: 2500,
+          position: 'top',
+          cssClass: 'toastSuccess'
+        }).present();
+
+        this.chore = "";
         
       })
     }
