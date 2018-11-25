@@ -12,7 +12,6 @@ import firebase from 'firebase';
 export class ChoresPage {
 
   chore: string = "";
-  dateAdded: string = "";
 
   constructor(
     public navCtrl: NavController, 
@@ -22,45 +21,24 @@ export class ChoresPage {
     ) {
   }
 
-  addChore() {
+  postChore() {
 
-    this.alertCtrl.create({
-      title: "Add Chore",
-      message: "Add Details For Chore Below",
-      cssClass: "alertBox",
-      inputs: [
-        {
-          name: 'textForChore',
-          type: 'text',
-          placeholder: 'Insert Chore'
-        }
-      ],
-      buttons: [
-        {
-          text: "Cancel",
-          role: "cancel",
-          //cssClass: "cancelButton",
-          handler: (data) => {
-            console.log(data)
-            this.dateAdded = ""
-            this.chore = ""
-          }
-        },
-        {
-          text: "Ok",
-          handler: (data) => {
-            if(data) {
-              this.chore = data.textForChore
-            }
-            
-          }
-        },
-      ]
-    }).present()
-
-    firebase.firestore().collection("chores").add({
-
-    })
+    if(this.chore === "") {
+      this.alertCtrl.create({
+        title: "Must Insert Chore",
+        buttons: ['Dismiss']
+      }).present();
+    } else {
+      firebase.firestore().collection("chores").add({
+        text: this.chore,
+        created: firebase.firestore.FieldValue.serverTimestamp(),
+        owner: firebase.auth().currentUser.uid,
+        owner_name: firebase.auth().currentUser.displayName
+      }).then((doc) => {
+        console.log('chore added', doc);
+        
+      })
+    }
     
   }
 
@@ -87,6 +65,7 @@ export class ChoresPage {
           },
           {
             text: 'No',
+            role: 'cancel',
             handler: () => {
             
             }

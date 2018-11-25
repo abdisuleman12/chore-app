@@ -18,16 +18,28 @@
 
   <ion-grid class="grid-width">
 
-    <ion-row margin-top>      
-      <ion-col text-center>
-          <button ion-button  block round color="secondary" (click)="addChore()">
-              Add Chore
-            </button> 
-      </ion-col>   
+    <ion-row class="rowStyle" margin-top>  
+      <button ion-button clear (click)="addPhoto()">
+          <ion-icon class="icon" name="camera" color="secondary"></ion-icon>
+      </button>    
+
+      <ion-input placeholder="Add Chore" [(ngModel)]="chore"></ion-input>
+
+      <button ion-button clear (click)="postChore()">
+          <ion-icon class="icon" name="send" color="secondary"></ion-icon>
+      </button>
+  
     </ion-row>
 
-    <ion-row class="rowStyle" *ngIf="chore">
-      <ion-input [(ngModel)]="chore"></ion-input>
+    <ion-row *ngIf="chore">
+      <ion-card>
+        <ion-card-header>
+          Chore
+        </ion-card-header>
+        <ion-card-content>
+          {{chore}}
+        </ion-card-content>
+      </ion-card>
     </ion-row>
 
 

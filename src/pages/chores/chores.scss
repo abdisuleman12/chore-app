@@ -1,20 +1,32 @@
 page-chores {
 
  ion-content {
-     .scroll-content {
+
+    .scroll-content {
          background-color: map-get($colors, primary )
-     }
+    }
      
-     .item {
+    .item {
         background-color: map-get($colors, primary )
     }
 
+    .rowStyle{
+        
+        ion-input {
+                margin-top: 5px;
+        }
 
-    ion-icon  {
-        margin-top: 13px;
-        margin-right: 10px;
+        .icon {
+            margin-top: 5px;
+        }
+
     }
 
- }
+
+ 
+
+
+
+ } // end of ion-content
 
 }
