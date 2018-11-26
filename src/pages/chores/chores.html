@@ -31,16 +31,17 @@
   
     </ion-row>
 
-    <!-- <ion-row *ngIf="chore">
+    <ion-row *ngFor="let chore of chores">
       <ion-card>
-        <ion-card-header>
-          Chore
-        </ion-card-header>
+        <img src="../../assets/imgs/logo.png" />
         <ion-card-content>
-          {{chore}}
+          <ion-card-title>
+            {{chore.data().owner_name}} Posted:
+          </ion-card-title>
+          <p>{{chore.data().text}}</p>
         </ion-card-content>
       </ion-card>
-    </ion-row> -->
+    </ion-row>
 
 
   </ion-grid>

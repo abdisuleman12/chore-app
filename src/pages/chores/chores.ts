@@ -35,7 +35,7 @@ export class ChoresPage {
    .then((docs) => {
 
      docs.forEach((doc) => {
-       console.log(doc, 'each doc in for each')
+       console.log(doc.data(), 'each doc in for each')
        this.chores.push(doc)
      })
    })
