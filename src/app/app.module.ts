@@ -11,8 +11,6 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ChoresPage } from '../pages/chores/chores';
 
-
-
 var config = {
   apiKey: "AIzaSyA6hQw3WU3-pvtdREH0_5zjdRYyoYDCMko",
   authDomain: "oru-app.firebaseapp.com",
@@ -22,7 +20,12 @@ var config = {
   messagingSenderId: "347846906532"
 };
 
+
 firebase.initializeApp(config);
+firebase.firestore().settings({
+  timestampsInSnapshots : true
+})
+
 
 @NgModule({
   declarations: [
