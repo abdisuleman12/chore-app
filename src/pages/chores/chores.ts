@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import moment from 'moment';
 
 import { LoginPage } from '../login/login';
 
@@ -28,6 +29,8 @@ export class ChoresPage {
   }
 
   getChores() {
+
+   this.chores = [];
 
    let query = firebase.firestore().collection("chores").orderBy("created", "desc")
 
@@ -61,13 +64,15 @@ export class ChoresPage {
         console.log('chore added', doc);
 
         this.toastCtrl.create({
-          message: `${this.chore}` + " has been successfully added!",
-          duration: 2500,
+          message: "Chore has been successfully added!",
+          duration: 2000,
           position: 'top',
           cssClass: 'toastSuccess'
         }).present();
 
         this.chore = "";
+
+        this.getChores()
         
       })
     }
