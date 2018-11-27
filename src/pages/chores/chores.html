@@ -45,12 +45,17 @@
         <img src="../../assets/imgs/logo.png" />
 
           <ion-row class="bottom-bar"> 
-            <ion-col>
-              <ion-icon name="calendar"></ion-icon>
+            <ion-col class="border-right">
+              <button ion-button clear icon-left small block color="danger" (click)="deleteChore()"> 
+                  <ion-icon name="trash"></ion-icon>
+              </button>
             </ion-col>
 
             <ion-col>
-              <small>{{chore.data().created}}</small>
+              <button ion-button clear small block color="secondary">
+                <ion-icon name="calendar" class="cal-icon"></ion-icon>
+                <small>{{ago(chore.data().created.toDate())}} ago</small>
+              </button>
             </ion-col>
           </ion-row>
   
