@@ -2,13 +2,18 @@ page-chores {
 
  ion-content {
 
+    .bottom-bar {
+        background-color: map-get($colors, dark-primary );
+        text-align: center;
+    }
+
     .scroll-content {
          background-color: map-get($colors, primary )
     }
      
-    .item {
-        background-color: map-get($colors, primary )
-    }
+    // .item {
+    //     background-color: map-get($colors, primary )
+    // }
 
     .rowStyle{
 
@@ -20,6 +25,11 @@ page-chores {
             margin-top: 5px;
         }
 
+    }
+
+    .round-corners {
+        border-radius: 24px;
+        color: red;
     }
 
 

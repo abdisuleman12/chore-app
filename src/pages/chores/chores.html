@@ -32,14 +32,28 @@
     </ion-row>
 
     <ion-row *ngFor="let chore of chores">
-      <ion-card>
+      <ion-card class="">
+
+        <ion-item-divider color="secondary">
+          {{chore.data().owner_name}} posted:
+        </ion-item-divider>
+
+        <ion-item text-nowrap>
+            <p>{{chore.data().text}}</p>
+        </ion-item>
+
         <img src="../../assets/imgs/logo.png" />
-        <ion-card-content>
-          <ion-card-title>
-            {{chore.data().owner_name}} Posted:
-          </ion-card-title>
-          <p>{{chore.data().text}}</p>
-        </ion-card-content>
+
+          <ion-row class="bottom-bar"> 
+            <ion-col>
+              <ion-icon name="calendar"></ion-icon>
+            </ion-col>
+
+            <ion-col>
+              <small>11/26/2018</small>
+            </ion-col>
+          </ion-row>
+  
       </ion-card>
     </ion-row>
 
