@@ -28,6 +28,16 @@ export class ChoresPage {
     console.log('addPhoto Clicked')
   }
 
+  ago(time) {
+    let difference = moment(time).diff(moment())
+    return moment.duration(difference).humanize();
+  }
+
+  deleteChore() {
+    console.log('delete chore clicked');
+    
+  }
+
   getChores() {
 
    this.chores = [];
