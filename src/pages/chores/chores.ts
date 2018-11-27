@@ -14,6 +14,7 @@ export class ChoresPage {
 
   chore: string = "";
   chores: any[] = [];
+  image: string;
 
   constructor(
     public navCtrl: NavController, 

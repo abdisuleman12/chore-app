@@ -18,7 +18,7 @@
 
   <ion-grid class="grid-width">
 
-    <ion-row class="rowStyle" margin-top>  
+    <ion-row class="rowStyle">  
       <button ion-button clear (click)="addPhoto()">
           <ion-icon class="icon" name="camera" color="secondary"></ion-icon>
       </button>    
@@ -31,6 +31,13 @@
   
     </ion-row>
 
+    <!-- image preview on upload -->
+    <ion-row margin class="rowStyle" *ngIf="image">
+        <ion-card class="round-corners">
+          <img [src]="image" class="round-corners">
+        </ion-card>
+    </ion-row>
+
     <ion-row *ngFor="let chore of chores">
       <ion-card class="">
 
@@ -38,11 +45,9 @@
           {{chore.data().owner_name}} posted:
         </ion-item-divider>
 
-        <ion-item text-nowrap>
+        <ion-item text-wrap>
             <p>{{chore.data().text}}</p>
         </ion-item>
-
-        <img src="../../assets/imgs/logo.png" />
 
           <ion-row class="bottom-bar"> 
             <ion-col class="border-right">
