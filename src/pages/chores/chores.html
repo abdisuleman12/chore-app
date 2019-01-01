@@ -18,7 +18,7 @@
 
   <ion-grid class="grid-width">
 
-    <ion-row class="rowStyle">  
+    <ion-row class="rowStyle" margin-bottom>  
       <button ion-button clear (click)="addPhoto()">
           <ion-icon class="icon" name="camera" color="secondary"></ion-icon>
       </button>    
@@ -32,7 +32,7 @@
     </ion-row>
 
     <!-- image preview on upload -->
-    <ion-row margin class="rowStyle" *ngIf="image">
+    <ion-row margin class="rowStyle" *ngIf="image" >
         <ion-card class="round-corners">
           <img [src]="image" class="round-corners">
         </ion-card>
@@ -41,27 +41,49 @@
     <ion-row *ngFor="let chore of chores">
       <ion-card class="">
 
-        <ion-item-divider color="secondary">
+        <!-- <ion-item-divider color="secondary" text-capitalize>
           {{chore.data().owner_name}} posted:
-        </ion-item-divider>
+        </ion-item-divider> -->
 
         <ion-item text-wrap>
-            <p>{{chore.data().text}}</p>
+            <p text-capitalize>{{chore.data().text}}</p>
         </ion-item>
 
+          
           <ion-row class="bottom-bar"> 
+
             <ion-col class="border-right">
               <button ion-button clear icon-left small block color="danger" (click)="deleteChore()"> 
                   <ion-icon name="trash"></ion-icon>
               </button>
             </ion-col>
 
-            <ion-col>
+            <ion-col col-8>
               <button ion-button clear small block color="secondary">
                 <ion-icon name="calendar" class="cal-icon"></ion-icon>
                 <small>{{ago(chore.data().created.toDate())}} ago</small>
               </button>
             </ion-col>
+
+            
+            <!-- <ion-col>
+                <button ion-button clear small block color="secondary">
+                    <ion-icon name="" class="cal-icon"></ion-icon>
+                    <small> {{chore.data().owner_name}}</small>
+                </button>
+            </ion-col> -->
+
+            
+
+          </ion-row>
+
+          <ion-row class="bottom-bar">
+              <ion-col class="border-top">
+                  <button ion-button clear small block color="secondary">
+                      <ion-icon name="cloud-upload" class="cal-icon"></ion-icon>
+                      <small> {{chore.data().owner_name}}</small>
+                  </button>
+              </ion-col>
           </ion-row>
   
       </ion-card>

@@ -5,10 +5,18 @@ page-chores {
     .bottom-bar {
         background-color: map-get($colors, primary );
         text-align: center;
+
+        & ion-col {
+            padding: 0;
+        }
     }
 
     .border-right {
         border-right: 1px solid map-get($colors, dark-primary)
+    }
+
+    .border-top {
+        border-top: 1px solid map-get($colors, dark-primary)
     }
 
     .cal-icon {
